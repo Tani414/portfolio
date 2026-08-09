@@ -965,16 +965,38 @@
           <a href="https://www.linkedin.com/in/tanisha-p-a90760326/" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <form id="contactForm">
+      <form id="contactForm" action="https://formspree.io/f/mjybgnol" method="POST">
         <div class="form-row">
-          <div><label for="fname">First name</label><input type="text" id="fname" required></div>
-          <div><label for="lname">Last name</label><input type="text" id="lname" required></div>
+        <div>
+          <label for="fname">First name</label>
+          <input type="text" id="fname" name="first_name" required>
         </div>
-        <div><label for="email">Email</label><input type="email" id="email" required></div>
-        <div><label for="subject">Subject</label><input type="text" id="subject"></div>
-        <div><label for="message">Message</label><textarea id="message" required></textarea></div>
-        <button type="button" class="btn submit-btn" id="submitBtn">Send message</button>
-      </form>
+
+        <div>
+          <label for="lname">Last name</label>
+          <input type="text" id="lname" name="last_name" required>
+        </div>
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject">
+      </div>
+
+      <div>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn submit-btn" id="submitBtn">
+        Send message
+      </button>
+    </form>
     </div>
   </div>
 </section>
@@ -1003,14 +1025,6 @@
   };
   applyTheme();
   themeToggle.addEventListener('click', () => { theme = theme === 'light' ? 'dark' : 'light'; applyTheme(); });
-
-  const submitBtn = document.getElementById('submitBtn');
-  const form = document.getElementById('contactForm');
-  submitBtn.addEventListener('click', () => {
-    if (!form.checkValidity()) { form.reportValidity(); return; }
-    submitBtn.textContent = 'Message noted ✓';
-    setTimeout(() => { submitBtn.textContent = 'Send message'; }, 2500);
-  });
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
